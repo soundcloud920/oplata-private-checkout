@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#030304">
+    <meta
+      name="description"
+      content="Темный минималистичный интерфейс оплаты доступа с крипто-реквизитами SOL и LTC."
+    >
+    <title>Oplata - private checkout</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+    <div class="noise-layer" aria-hidden="true"></div>
+
+    <div class="page-shell">
+      <header class="site-header" aria-label="Навигация">
+        <a class="brand" href="#top" aria-label="Oplata">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>OPLATA</span>
+        </a>
+        <nav class="nav-links" aria-label="Разделы">
+          <a href="#checkout">Оплата</a>
+          <a href="#process">Процесс</a>
+          <a href="#details">Детали</a>
+        </nav>
+        <button class="ghost-button" type="button" data-open-pay>Реквизиты</button>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">Private checkout</p>
+            <h1 id="hero-title">Чистая темная оплата без лишнего шума.</h1>
+            <p class="hero-lede">
+              Минималистичный интерфейс для крипто-перевода: сеть, адрес, копирование,
+              статус и ничего, что мешает совершить оплату.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#checkout">
+                Перейти к оплате
+                <span aria-hidden="true">-></span>
+              </a>
+              <button class="text-button" type="button" data-open-pay>Открыть окно</button>
+            </div>
+          </div>
+
+          <aside id="checkout" class="checkout-panel" aria-label="Панель оплаты">
+            <div class="panel-topline">
+              <span>Access payment</span>
+              <strong>Active</strong>
+            </div>
+
+            <div class="amount-block">
+              <span>Сумма</span>
+              <strong>$250</strong>
+              <small>или эквивалент по договоренности</small>
+            </div>
+
+            <div class="network-switch" role="tablist" aria-label="Сеть оплаты">
+              <button class="is-active" type="button" role="tab" aria-selected="true" data-network="sol">
+                <span>SOL</span>
+                <small>Solana</small>
+              </button>
+              <button type="button" role="tab" aria-selected="false" data-network="ltc">
+                <span>LTC</span>
+                <small>Litecoin</small>
+              </button>
+            </div>
+
+            <div class="address-box">
+              <div>
+                <span id="walletNetwork">Solana</span>
+                <input
+                  id="walletAddress"
+                  type="text"
+                  value="BBX6mCEQhhpC9Ms1b2QhoVyhJDwqoHt76hNYjjnUqGvp"
+                  readonly
+                >
+              </div>
+              <button class="copy-button" type="button" data-copy-address>Копировать</button>
+            </div>
+
+            <div class="status-grid" aria-label="Статус оплаты">
+              <div>
+                <span>Проверка</span>
+                <strong>Manual</strong>
+              </div>
+              <div>
+                <span>Сети</span>
+                <strong>SOL / LTC</strong>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="process" class="process-section" aria-labelledby="process-title">
+          <div class="section-title">
+            <p class="eyebrow">Flow</p>
+            <h2 id="process-title">Оплата за три действия.</h2>
+          </div>
+          <div class="step-grid">
+            <article>
+              <span>01</span>
+              <h3>Выбери сеть</h3>
+              <p>SOL для быстрого перевода или LTC для низкой комиссии.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Скопируй адрес</h3>
+              <p>Кнопка дает мгновенную обратную связь и не ломает длинные строки.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Отправь tx hash</h3>
+              <p>После перевода платеж подтверждается вручную владельцем проекта.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="details" class="details-section" aria-label="Детали оплаты">
+          <div>
+            <p class="eyebrow">Details</p>
+            <h2>Реквизиты всегда под рукой.</h2>
+          </div>
+          <div class="wallet-list">
+            <article>
+              <span>Solana</span>
+              <code>BBX6mCEQhhpC9Ms1b2QhoVyhJDwqoHt76hNYjjnUqGvp</code>
+            </article>
+            <article>
+              <span>Litecoin</span>
+              <code>LWxMQxaMogAjkKUqY4zSmFLqw6BJ28UxhA</code>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>OPLATA</span>
+        <button class="ghost-button" type="button" data-open-pay>Реквизиты</button>
+      </footer>
+    </div>
+
+    <div class="modal" id="payModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-pay></div>
+      <section
+        class="payment-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="payment-title"
+        aria-describedby="payment-description"
+      >
+        <button class="modal-close" type="button" data-close-pay aria-label="Закрыть окно оплаты">
+          <span aria-hidden="true">x</span>
+        </button>
+        <p class="eyebrow">Payment details</p>
+        <h2 id="payment-title">Реквизиты</h2>
+        <p id="payment-description">
+          Выберите сеть, скопируйте адрес и отправьте перевод. После оплаты передайте tx hash.
+        </p>
+
+        <div class="modal-actions">
+          <button class="is-active" type="button" data-network="sol">Solana</button>
+          <button type="button" data-network="ltc">Litecoin</button>
+        </div>
+
+        <div class="address-box modal-address">
+          <div>
+            <span id="modalNetwork">Solana</span>
+            <input
+              id="modalAddress"
+              type="text"
+              value="BBX6mCEQhhpC9Ms1b2QhoVyhJDwqoHt76hNYjjnUqGvp"
+              readonly
+            >
+          </div>
+          <button class="copy-button" type="button" data-copy-modal>Копировать</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
