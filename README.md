@@ -2,6 +2,8 @@
 
 Static dark payment landing page rebuilt from `OPLATA))).html`.
 
+Live: https://soundcloud920.github.io/oplata-liquid-glass-site/
+
 ## Files
 
 - `index.html` - page markup
