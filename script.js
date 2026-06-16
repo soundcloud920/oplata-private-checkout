@@ -9,7 +9,9 @@ const wallets = {
   },
 };
 
-const mainCta = document.querySelector("[data-main-cta]");
+const caseCta = document.querySelector("[data-case-cta]");
+const payCta = document.querySelector("[data-pay-cta]");
+const caseSection = document.querySelector("#case");
 const paymentSection = document.querySelector("#payment");
 const networkButtons = document.querySelectorAll("[data-network]");
 const walletNetwork = document.querySelector("#walletNetwork");
@@ -60,6 +62,14 @@ async function copyAddress() {
   window.setTimeout(resetCopyButton, 1800);
 }
 
+function scrollToSection(section, focusTarget) {
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  if (focusTarget) {
+    window.setTimeout(() => focusTarget.focus(), 520);
+  }
+}
+
 function showSuccess(hash) {
   paymentForm.hidden = true;
   successState.hidden = false;
@@ -68,10 +78,9 @@ function showSuccess(hash) {
   history.replaceState(null, "", "#success");
 }
 
-mainCta.addEventListener("click", () => {
-  paymentSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  window.setTimeout(() => walletAddress.focus(), 520);
-});
+caseCta?.addEventListener("click", () => scrollToSection(caseSection));
+
+payCta?.addEventListener("click", () => scrollToSection(paymentSection, walletAddress));
 
 networkButtons.forEach((button) => {
   button.addEventListener("click", () => setNetwork(button.dataset.network));

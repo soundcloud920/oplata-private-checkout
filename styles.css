@@ -1,8 +1,9 @@
 :root {
   --bg: #05070a;
   --bg-soft: #091018;
-  --panel: rgba(12, 18, 27, 0.82);
+  --panel: rgba(12, 18, 27, 0.84);
   --panel-strong: rgba(13, 18, 29, 0.96);
+  --panel-deep: rgba(5, 8, 13, 0.86);
   --line: rgba(235, 239, 247, 0.105);
   --line-strong: rgba(235, 239, 247, 0.19);
   --text: #f2f3f5;
@@ -12,6 +13,7 @@
   --accent-soft: rgba(201, 217, 234, 0.12);
   --gold: #d99c32;
   --green: #15bd85;
+  --red: #ef5f73;
   --success: #9be6bd;
   --error: #ff9a9a;
   --radius: 8px;
@@ -97,7 +99,7 @@ input:focus-visible {
   gap: 24px;
   padding: 0 clamp(18px, 4vw, 56px);
   border-bottom: 1px solid var(--line);
-  background: rgba(5, 5, 6, 0.76);
+  background: rgba(5, 5, 6, 0.78);
   backdrop-filter: blur(14px);
 }
 
@@ -143,8 +145,20 @@ input:focus-visible {
   background: rgba(255, 255, 255, 0.045);
 }
 
+main {
+  overflow: hidden;
+}
+
 .hero,
-.value-section,
+.case-section,
+.evidence-section,
+.audit-section,
+.comparison-section,
+.model-section,
+.investor-section,
+.risk-section,
+.expert-section,
+.decision-section,
 .payment-section,
 .site-footer {
   width: min(100%, 1160px);
@@ -152,7 +166,9 @@ input:focus-visible {
   padding-inline: clamp(18px, 4vw, 56px);
 }
 
-#value,
+#case,
+#evidence,
+#decision,
 #payment {
   scroll-margin-top: calc(var(--header-h) + 28px);
 }
@@ -177,34 +193,38 @@ input:focus-visible {
   color: var(--accent);
   font-family: "SF Mono", "Cascadia Mono", Consolas, monospace;
   font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
 h1,
 h2,
 h3,
-p {
+p,
+blockquote {
   margin-top: 0;
 }
 
-h1 {
-  max-width: 660px;
-  margin-bottom: 22px;
+h1,
+h2 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(38px, 5.4vw, 66px);
+  text-wrap: balance;
+}
+
+h1 {
+  max-width: 720px;
+  margin-bottom: 22px;
+  font-size: clamp(42px, 6.2vw, 76px);
   line-height: 0.98;
   font-weight: 760;
-  text-wrap: balance;
   overflow-wrap: break-word;
 }
 
 h2 {
   margin-bottom: 0;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(34px, 4vw, 54px);
   line-height: 1.06;
   font-weight: 720;
-  text-wrap: balance;
 }
 
 h3 {
@@ -214,35 +234,44 @@ h3 {
 }
 
 .hero-lede,
+.split-copy p,
+.stat-tile p,
+.comparison-card p,
+.model-card p,
+.quote-card p,
 .payment-copy p,
-.value-item p,
 .success-state p {
   color: var(--muted);
   line-height: 1.62;
 }
 
 .hero-lede {
-  max-width: 520px;
+  max-width: 560px;
   margin-bottom: 30px;
   font-size: clamp(17px, 2vw, 20px);
 }
 
 .primary-cta,
+.secondary-cta,
 .submit-button,
 .copy-button,
 .network-switch button {
   cursor: pointer;
 }
 
-.primary-cta {
+.primary-cta,
+.secondary-cta {
   min-height: 54px;
   padding: 0 24px;
-  border: 1px solid rgba(199, 215, 232, 0.7);
   border-radius: 999px;
+  font-weight: 760;
+  transition: transform 170ms ease, background 170ms ease, border-color 170ms ease;
+}
+
+.primary-cta {
+  border: 1px solid rgba(199, 215, 232, 0.7);
   background: var(--accent);
   color: #090a0d;
-  font-weight: 760;
-  transition: transform 170ms ease, background 170ms ease;
 }
 
 .primary-cta:hover {
@@ -250,15 +279,33 @@ h3 {
   background: #e3edf7;
 }
 
+.secondary-cta {
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+}
+
+.secondary-cta:hover {
+  transform: translateY(-1px);
+  border-color: rgba(201, 217, 234, 0.45);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .deal-preview,
-.value-item,
+.stat-tile,
+.status-board,
+.audit-table,
+.comparison-card,
+.model-card,
+.impact-list,
+.risk-table,
+.quote-card,
+.decision-panel,
 .payment-card,
 .payment-summary,
 .address-box,
 .tx-field,
-.receipt,
-.metric-stack,
-.proof-card {
+.receipt {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
@@ -279,10 +326,25 @@ h3 {
   margin-bottom: 14px;
 }
 
-.preview-top span {
+.preview-top span,
+.preview-grid span,
+.stat-tile span,
+.board-row span,
+.audit-row span,
+.comparison-card span,
+.model-card span,
+.impact-list span,
+.risk-row span,
+.decision-grid span,
+.payment-summary span,
+.address-box span,
+.tx-field span,
+.receipt span,
+.verification-note {
   color: var(--dim);
   font-family: "SF Mono", "Cascadia Mono", Consolas, monospace;
   font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -315,64 +377,9 @@ h3 {
   border-bottom: 0;
 }
 
-.preview-grid span,
-.payment-summary span,
-.address-box span,
-.tx-field span,
-.value-item span,
-.receipt span,
-.verification-note,
-.metric-row span {
-  color: var(--dim);
-  font-family: "SF Mono", "Cascadia Mono", Consolas, monospace;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
 .preview-grid strong {
   font-size: 15px;
   text-align: right;
-}
-
-.value-section,
-.why-section,
-.proof-section,
-.payment-section {
-  width: min(100%, 1160px);
-  margin: 0 auto;
-  padding-inline: clamp(18px, 4vw, 56px);
-  padding-top: clamp(72px, 10vw, 122px);
-  padding-bottom: clamp(72px, 10vw, 122px);
-}
-
-.section-title {
-  max-width: 640px;
-  margin-bottom: 30px;
-}
-
-.value-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.value-item {
-  min-height: 190px;
-  padding: 22px;
-  background: rgba(13, 15, 19, 0.62);
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-}
-
-.value-item:hover {
-  transform: translateY(-2px);
-  border-color: var(--line-strong);
-  background: var(--panel);
-}
-
-.value-item span {
-  display: block;
-  margin-bottom: 42px;
-  color: var(--gold);
 }
 
 .curve-card {
@@ -391,18 +398,21 @@ h3 {
 }
 
 .curve-base,
-.curve-line {
+.curve-line,
+.danger-line,
+.danger-base {
   fill: none;
-  stroke-width: 4;
   stroke-linecap: round;
 }
 
 .curve-base {
   stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 4;
 }
 
 .curve-line {
   stroke: var(--green);
+  stroke-width: 4;
   filter: drop-shadow(0 0 10px rgba(21, 189, 133, 0.24));
 }
 
@@ -425,7 +435,51 @@ h3 {
   text-transform: uppercase;
 }
 
-.why-section,
+.case-section,
+.evidence-section,
+.audit-section,
+.comparison-section,
+.model-section,
+.investor-section,
+.risk-section,
+.expert-section,
+.decision-section,
+.payment-section {
+  padding-top: clamp(74px, 10vw, 126px);
+  padding-bottom: clamp(74px, 10vw, 126px);
+}
+
+.section-title {
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-tile {
+  min-height: 210px;
+  padding: 18px;
+  background: rgba(13, 15, 19, 0.62);
+}
+
+.stat-tile span {
+  display: block;
+  margin-bottom: 38px;
+  color: var(--gold);
+}
+
+.stat-tile strong {
+  display: block;
+  margin-bottom: 14px;
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1;
+}
+
+.split-section,
 .payment-section {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(360px, 0.78fr);
@@ -433,24 +487,20 @@ h3 {
   gap: clamp(32px, 7vw, 92px);
 }
 
-.why-copy,
+.split-copy,
 .payment-copy {
-  max-width: 540px;
+  max-width: 560px;
   position: sticky;
   top: calc(var(--header-h) + 34px);
 }
 
-.why-copy p {
-  color: var(--muted);
-  line-height: 1.62;
-}
-
-.metric-stack {
+.status-board {
   padding: 8px;
+  background: linear-gradient(180deg, rgba(15, 22, 34, 0.78), rgba(6, 9, 14, 0.78));
 }
 
-.metric-row {
-  min-height: 74px;
+.board-row {
+  min-height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -459,29 +509,264 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
-.metric-row:last-child {
-  border-bottom: 0;
-}
-
-.metric-row strong {
+.board-row strong {
   text-align: right;
 }
 
-.proof-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+.crash-chart {
+  position: relative;
+  min-height: 170px;
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-deep);
+  overflow: hidden;
 }
 
-.proof-card {
-  min-height: 184px;
-  padding: 22px;
+.crash-chart span {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  color: var(--dim);
+  font-family: "SF Mono", "Cascadia Mono", Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.crash-chart svg {
+  width: 100%;
+  height: 170px;
+  display: block;
+}
+
+.danger-line {
+  stroke: var(--red);
+  stroke-width: 4;
+  filter: drop-shadow(0 0 10px rgba(239, 95, 115, 0.22));
+}
+
+.danger-base {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 2;
+}
+
+.audit-table,
+.risk-table {
+  overflow: hidden;
   background: rgba(13, 19, 29, 0.64);
 }
 
-.proof-card p {
+.audit-row,
+.risk-row {
+  display: grid;
+  grid-template-columns: 1fr 0.72fr 1.4fr;
+  gap: 18px;
+  align-items: center;
+  min-height: 76px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.audit-row:last-child,
+.risk-row:last-child {
+  border-bottom: 0;
+}
+
+.audit-head,
+.risk-head {
+  min-height: 48px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.audit-row strong {
+  color: var(--green);
+  font-family: "SF Mono", "Cascadia Mono", Consolas, monospace;
+}
+
+.audit-row p,
+.risk-row p {
+  margin: 0;
   color: var(--muted);
-  line-height: 1.58;
+  line-height: 1.5;
+}
+
+.comparison-grid,
+.model-grid,
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quote-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.comparison-card,
+.model-card,
+.quote-card {
+  min-height: 230px;
+  padding: 22px;
+}
+
+.comparison-card.negative {
+  border-color: rgba(239, 95, 115, 0.22);
+  background: linear-gradient(180deg, rgba(42, 14, 20, 0.34), rgba(13, 15, 19, 0.62));
+}
+
+.comparison-card.positive {
+  border-color: rgba(21, 189, 133, 0.22);
+  background: linear-gradient(180deg, rgba(9, 42, 31, 0.34), rgba(13, 15, 19, 0.62));
+}
+
+.comparison-card span,
+.model-card span {
+  display: block;
+  margin-bottom: 34px;
+}
+
+.comparison-card strong,
+.model-card strong {
+  display: block;
+  margin-bottom: 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1;
+}
+
+.comparison-card.negative strong {
+  color: var(--red);
+}
+
+.comparison-card.positive strong,
+.model-card strong {
+  color: var(--green);
+}
+
+.model-card {
+  background: rgba(13, 19, 29, 0.64);
+}
+
+.impact-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.55fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.impact-ring {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at center, rgba(5, 7, 10, 0.98) 0 38%, transparent 39%),
+    conic-gradient(var(--gold) 0 25%, var(--green) 25% 75%, #1992d4 75% 88%, var(--red) 88% 100%);
+}
+
+.impact-ring span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 44px;
+  font-weight: 760;
+}
+
+.impact-ring small {
+  display: block;
+  margin-top: -78px;
+  color: var(--dim);
+  font-family: "SF Mono", "Cascadia Mono", Consolas, monospace;
+  text-transform: uppercase;
+}
+
+.impact-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.impact-list div {
+  min-height: 140px;
+  padding: 20px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.impact-list div:nth-child(2n) {
+  border-right: 0;
+}
+
+.impact-list div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.impact-list span {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--gold);
+}
+
+.impact-list strong {
+  font-size: 20px;
+}
+
+.risk-row {
+  grid-template-columns: 0.85fr 1fr 1.25fr;
+}
+
+.risk-row strong {
+  color: var(--accent);
+}
+
+.quote-card {
+  margin: 0;
+  background: rgba(13, 15, 19, 0.62);
+}
+
+.quote-card p {
+  margin-bottom: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.decision-panel {
+  padding: clamp(20px, 4vw, 34px);
+  background:
+    linear-gradient(180deg, rgba(18, 26, 41, 0.92), rgba(8, 12, 18, 0.92));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+}
+
+.decision-panel h2 {
+  max-width: 760px;
+  margin-bottom: 26px;
+}
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--line);
+}
+
+.decision-grid div {
+  min-height: 96px;
+  padding: 18px;
+  background: rgba(7, 9, 14, 0.86);
+}
+
+.decision-grid span {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.decision-grid strong {
+  overflow-wrap: anywhere;
 }
 
 .payment-card {
@@ -716,10 +1001,21 @@ h3 {
   }
 }
 
+@media (max-width: 1020px) {
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quote-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 940px) {
   .hero,
-  .why-section,
-  .payment-section {
+  .split-section,
+  .payment-section,
+  .impact-layout {
     grid-template-columns: 1fr;
   }
 
@@ -728,26 +1024,24 @@ h3 {
   }
 
   .deal-preview,
+  .status-board,
   .payment-card {
     width: min(100%, 560px);
   }
 
-  .why-copy,
+  .split-copy,
   .payment-copy {
     position: static;
   }
 
-  .value-grid,
-  .proof-grid {
+  .comparison-grid,
+  .model-grid,
+  .decision-grid {
     grid-template-columns: 1fr;
   }
 
-  .value-item {
-    min-height: 0;
-  }
-
-  .value-item span {
-    margin-bottom: 24px;
+  .impact-list div {
+    min-height: 120px;
   }
 }
 
@@ -769,20 +1063,55 @@ h3 {
     padding-bottom: 56px;
   }
 
-  .primary-cta {
+  h1 {
+    font-size: clamp(40px, 12vw, 54px);
+  }
+
+  .primary-cta,
+  .secondary-cta {
     width: 100%;
   }
 
   .payment-card,
   .deal-preview,
-  .value-item {
+  .stat-tile,
+  .comparison-card,
+  .model-card,
+  .quote-card,
+  .decision-panel {
     padding: 14px;
   }
 
+  .case-grid,
+  .impact-list,
   .address-box,
   .network-switch,
   .receipt {
     grid-template-columns: 1fr;
+  }
+
+  .audit-row,
+  .risk-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .audit-head,
+  .risk-head {
+    display: none;
+  }
+
+  .impact-list div,
+  .impact-list div:nth-child(2n),
+  .impact-list div:nth-last-child(-n + 2) {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .impact-list div:last-child {
+    border-bottom: 0;
   }
 
   .copy-button {
