@@ -3,183 +3,155 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#030304">
+    <meta name="theme-color" content="#050506">
     <meta
       name="description"
-      content="Темный минималистичный интерфейс оплаты доступа с крипто-реквизитами SOL и LTC."
+      content="Приватная страница оплаты доступа за $10 с ручным подтверждением перевода."
     >
-    <title>Oplata - private checkout</title>
+    <title>OPLATA - приватный доступ за $10</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <canvas id="ambientCanvas" aria-hidden="true"></canvas>
-    <div class="noise-layer" aria-hidden="true"></div>
+    <div class="page-bg" aria-hidden="true"></div>
 
     <div class="page-shell">
       <header class="site-header" aria-label="Навигация">
-        <a class="brand" href="#top" aria-label="Oplata">
+        <a class="brand" href="#top" aria-label="OPLATA">
           <span class="brand-mark" aria-hidden="true"></span>
           <span>OPLATA</span>
         </a>
-        <nav class="nav-links" aria-label="Разделы">
-          <a href="#checkout">Оплата</a>
-          <a href="#process">Процесс</a>
-          <a href="#details">Детали</a>
+        <nav class="nav-links" aria-label="Разделы страницы">
+          <a href="#value">Что внутри</a>
+          <a href="#payment">Оплата</a>
         </nav>
-        <button class="ghost-button" type="button" data-open-pay>Реквизиты</button>
       </header>
 
       <main id="top">
         <section class="hero" aria-labelledby="hero-title">
-          <div class="hero-copy">
-            <p class="eyebrow">Private checkout</p>
-            <h1 id="hero-title">Чистая темная оплата без лишнего шума.</h1>
+          <div class="hero-copy reveal from-left">
+            <p class="eyebrow">Приватный доступ</p>
+            <h1 id="hero-title">Закрытый материал за $10.</h1>
             <p class="hero-lede">
-              Минималистичный интерфейс для крипто-перевода: сеть, адрес, копирование,
-              статус и ничего, что мешает совершить оплату.
+              Короткий разбор с аргументами, смыслом и следующим шагом. Без подписки.
             </p>
-            <div class="hero-actions">
-              <a class="primary-link" href="#checkout">
-                Перейти к оплате
-                <span aria-hidden="true">-></span>
-              </a>
-              <button class="text-button" type="button" data-open-pay>Открыть окно</button>
-            </div>
+            <button class="primary-cta" type="button" data-main-cta>
+              Оплатить $10
+            </button>
           </div>
 
-          <aside id="checkout" class="checkout-panel" aria-label="Панель оплаты">
-            <div class="panel-topline">
-              <span>Access payment</span>
-              <strong>Active</strong>
-            </div>
-
-            <div class="amount-block">
+          <aside class="access-card reveal from-right" aria-label="Сводка оплаты">
+            <div class="card-row">
               <span>Сумма</span>
-              <strong>$250</strong>
-              <small>или эквивалент по договоренности</small>
+              <strong>$10</strong>
             </div>
-
-            <div class="network-switch" role="tablist" aria-label="Сеть оплаты">
-              <button class="is-active" type="button" role="tab" aria-selected="true" data-network="sol">
-                <span>SOL</span>
-                <small>Solana</small>
-              </button>
-              <button type="button" role="tab" aria-selected="false" data-network="ltc">
-                <span>LTC</span>
-                <small>Litecoin</small>
-              </button>
+            <div class="card-row">
+              <span>Формат</span>
+              <strong>Разовый платеж</strong>
             </div>
-
-            <div class="address-box">
-              <div>
-                <span id="walletNetwork">Solana</span>
-                <input
-                  id="walletAddress"
-                  type="text"
-                  value="BBX6mCEQhhpC9Ms1b2QhoVyhJDwqoHt76hNYjjnUqGvp"
-                  readonly
-                >
-              </div>
-              <button class="copy-button" type="button" data-copy-address>Копировать</button>
-            </div>
-
-            <div class="status-grid" aria-label="Статус оплаты">
-              <div>
-                <span>Проверка</span>
-                <strong>Manual</strong>
-              </div>
-              <div>
-                <span>Сети</span>
-                <strong>SOL / LTC</strong>
-              </div>
+            <div class="card-row">
+              <span>Проверка</span>
+              <strong>Вручную</strong>
             </div>
           </aside>
         </section>
 
-        <section id="process" class="process-section" aria-labelledby="process-title">
-          <div class="section-title">
-            <p class="eyebrow">Flow</p>
-            <h2 id="process-title">Оплата за три действия.</h2>
+        <section id="value" class="value-section" aria-labelledby="value-title">
+          <div class="section-title reveal from-left">
+            <p class="eyebrow">После оплаты</p>
+            <h2 id="value-title">Что вы получаете</h2>
           </div>
-          <div class="step-grid">
-            <article>
+
+          <div class="value-grid">
+            <article class="value-item reveal from-left">
               <span>01</span>
-              <h3>Выбери сеть</h3>
-              <p>SOL для быстрого перевода или LTC для низкой комиссии.</p>
+              <h3>Закрытый разбор</h3>
+              <p>Суть без длинного вступления.</p>
             </article>
-            <article>
+            <article class="value-item reveal from-left">
               <span>02</span>
-              <h3>Скопируй адрес</h3>
-              <p>Кнопка дает мгновенную обратную связь и не ломает длинные строки.</p>
+              <h3>Аргументы</h3>
+              <p>Почему это стоит внимания.</p>
             </article>
-            <article>
+            <article class="value-item reveal from-left">
               <span>03</span>
-              <h3>Отправь tx hash</h3>
-              <p>После перевода платеж подтверждается вручную владельцем проекта.</p>
+              <h3>Следующий шаг</h3>
+              <p>Что делать после прочтения.</p>
             </article>
           </div>
         </section>
 
-        <section id="details" class="details-section" aria-label="Детали оплаты">
-          <div>
-            <p class="eyebrow">Details</p>
-            <h2>Реквизиты всегда под рукой.</h2>
+        <section id="payment" class="payment-section" aria-labelledby="payment-title">
+          <div class="payment-copy reveal from-left">
+            <p class="eyebrow">Оплата</p>
+            <h2 id="payment-title">Выберите сеть и отправьте $10.</h2>
+            <p>
+              Скопируйте адрес, отправьте платеж, затем передайте tx hash. Доступ подтверждается после проверки перевода.
+            </p>
           </div>
-          <div class="wallet-list">
-            <article>
-              <span>Solana</span>
-              <code>BBX6mCEQhhpC9Ms1b2QhoVyhJDwqoHt76hNYjjnUqGvp</code>
-            </article>
-            <article>
-              <span>Litecoin</span>
-              <code>LWxMQxaMogAjkKUqY4zSmFLqw6BJ28UxhA</code>
-            </article>
+
+          <div class="payment-card reveal from-right">
+            <form class="payment-form" data-payment-form>
+              <div class="payment-summary">
+                <span>К оплате</span>
+                <strong>$10</strong>
+              </div>
+
+              <div class="network-switch" role="tablist" aria-label="Сеть оплаты">
+                <button class="is-active" type="button" role="tab" aria-selected="true" data-network="sol">
+                  <span>SOL</span>
+                  <small>Solana</small>
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-network="ltc">
+                  <span>LTC</span>
+                  <small>Litecoin</small>
+                </button>
+              </div>
+
+              <div class="address-box">
+                <label for="walletAddress">
+                  <span id="walletNetwork">Solana</span>
+                  <input
+                    id="walletAddress"
+                    type="text"
+                    value="BBX6mCEQhhpC9Ms1b2QhoVyhJDwqoHt76hNYjjnUqGvp"
+                    readonly
+                  >
+                </label>
+                <button class="copy-button" type="button" data-copy-address>Скопировать</button>
+              </div>
+
+              <label class="tx-field" for="txHash">
+                <span>Tx hash</span>
+                <input id="txHash" name="txHash" type="text" autocomplete="off" placeholder="Вставьте hash после перевода">
+              </label>
+
+              <p class="verification-note" data-form-note>
+                Проверка вручную после перевода.
+              </p>
+
+              <button class="submit-button" type="submit">Отправить tx hash</button>
+            </form>
+
+            <section class="success-state" data-success-state hidden aria-live="polite">
+              <div class="success-mark" aria-hidden="true"></div>
+              <p class="eyebrow">Готово</p>
+              <h2>Tx hash принят.</h2>
+              <p>Перевод будет проверен вручную. После подтверждения откроется доступ.</p>
+              <div class="receipt">
+                <span>Сеть</span>
+                <strong data-success-network>Solana</strong>
+                <span>Tx hash</span>
+                <code data-success-hash></code>
+              </div>
+            </section>
           </div>
         </section>
       </main>
 
       <footer class="site-footer">
         <span>OPLATA</span>
-        <button class="ghost-button" type="button" data-open-pay>Реквизиты</button>
+        <span>Приватный доступ после проверки платежа.</span>
       </footer>
-    </div>
-
-    <div class="modal" id="payModal" aria-hidden="true">
-      <div class="modal-backdrop" data-close-pay></div>
-      <section
-        class="payment-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="payment-title"
-        aria-describedby="payment-description"
-      >
-        <button class="modal-close" type="button" data-close-pay aria-label="Закрыть окно оплаты">
-          <span aria-hidden="true">x</span>
-        </button>
-        <p class="eyebrow">Payment details</p>
-        <h2 id="payment-title">Реквизиты</h2>
-        <p id="payment-description">
-          Выберите сеть, скопируйте адрес и отправьте перевод. После оплаты передайте tx hash.
-        </p>
-
-        <div class="modal-actions">
-          <button class="is-active" type="button" data-network="sol">Solana</button>
-          <button type="button" data-network="ltc">Litecoin</button>
-        </div>
-
-        <div class="address-box modal-address">
-          <div>
-            <span id="modalNetwork">Solana</span>
-            <input
-              id="modalAddress"
-              type="text"
-              value="BBX6mCEQhhpC9Ms1b2QhoVyhJDwqoHt76hNYjjnUqGvp"
-              readonly
-            >
-          </div>
-          <button class="copy-button" type="button" data-copy-modal>Копировать</button>
-        </div>
-      </section>
     </div>
 
     <script src="script.js"></script>

@@ -1,13 +1,13 @@
-# OPLATA payment site
+# OPLATA checkout site
 
-Static dark payment landing page rebuilt from `OPLATA))).html`.
+Static dark private checkout page for a one-time $10 payment.
 
 Live: https://soundcloud920.github.io/oplata-liquid-glass-site/
 
 ## Files
 
 - `index.html` - page markup
-- `styles.css` - minimal dark responsive UI
-- `script.js` - animated canvas background, network switcher, copy action, payment modal
+- `styles.css` - dark responsive checkout UI
+- `script.js` - network switcher, copy action, tx hash success state
 
 Open `index.html` in a browser. No build step is required.
