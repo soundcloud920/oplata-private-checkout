@@ -1,14 +1,13 @@
-﻿# OPLATA checkout site
+# ОПЛАТА
 
-Static dark private checkout page for a one-time $10 payment.
+Статичная приватная страница оплаты проекта @lgbf за $10.
 
-Live: https://soundcloud920.github.io/oplata-private-checkout/
+Сайт: https://soundcloud920.github.io/oplata-private-checkout/
 
-## Files
+## Файлы
 
-- `index.html` - page markup
-- `styles.css` - dark responsive checkout UI
-- `script.js` - network switcher, copy action, tx hash success state
+- `index.html` - лендинг и сценарий оплаты
+- `styles.css` - темный адаптивный интерфейс
+- `script.js` - выбор сети, копирование адреса и состояние после отправки хэша
 
-Open `index.html` in a browser. No build step is required.
-
+Откройте `index.html` в браузере. Сборка не требуется.

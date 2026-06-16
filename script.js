@@ -84,7 +84,7 @@ paymentForm.addEventListener("submit", (event) => {
   const hash = txHash.value.trim();
 
   if (!hash) {
-    formNote.textContent = "Добавьте tx hash после перевода.";
+    formNote.textContent = "Добавьте хэш после перевода.";
     formNote.classList.add("is-error");
     txHash.focus();
     return;
